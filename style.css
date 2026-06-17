@@ -1,274 +1,922 @@
-/* =========================
-   Global
-========================= */
+/* ====================================
+   RIZKY SETYAWAN PORTFOLIO
+   Qatar 2022 × WC 2026
+==================================== */
 
-* {
-    box-sizing: border-box;
-}
+:root{
 
+--maroon:#8A1538;
+--maroon-dark:#5C0E25;
 
-body {
+--gold:#D4AF37;
+--gold-soft:#E6C766;
 
-    margin: 0;
-    font-family: "Inter", Arial, sans-serif;
+--ivory:#F8F4E9;
 
-    background:
-    linear-gradient(135deg,#0b1020,#111827);
+--cyan:#00D4FF;
+--blue:#3B82F6;
 
-    color: #e5e7eb;
+--glass:
+rgba(255,255,255,.08);
 
-    line-height: 1.7;
-
-}
-
-
-
-body::before {
-
-    content:"";
-
-    position: fixed;
-
-    width: 100%;
-    height:100%;
-
-    background-image:
-    radial-gradient(circle at top right,
-    rgba(56,189,248,0.15),
-    transparent 30%);
-
-    pointer-events:none;
+--border:
+rgba(255,255,255,.15);
 
 }
 
+/* ====================================
+RESET
+==================================== */
 
+*{
 
-/* =========================
-   Container
-========================= */
-
-
-header,
-section,
-footer {
-
-    max-width:1000px;
-    margin:auto;
-    padding:40px 25px;
+margin:0;
+padding:0;
+box-sizing:border-box;
 
 }
 
+html{
 
-
-/* =========================
-   Header
-========================= */
-
-
-header {
-
-    min-height:90vh;
-
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
+scroll-behavior:smooth;
 
 }
 
+body{
 
-header h1 {
+font-family:'Inter',sans-serif;
 
-    font-size:4rem;
-    margin:0;
+color:var(--ivory);
 
-    background:
-    linear-gradient(90deg,#38bdf8,#818cf8);
+background:
+linear-gradient(
+-45deg,
+#5C0E25,
+#8A1538,
+#3A163F,
+#111827
+);
 
-    -webkit-background-clip:text;
-    color:transparent;
+background-size:
+400% 400%;
 
-}
+animation:
+gradientMove 18s ease infinite;
 
+overflow-x:hidden;
 
-
-header p {
-
-    font-size:1.3rem;
-
-    color:#cbd5e1;
-
-}
-
-
-
-header a {
-
-
-    display:inline-block;
-
-    margin-top:25px;
-
-    padding:14px 28px;
-
-    border-radius:30px;
-
-    background:#38bdf8;
-
-    color:#020617;
-
-    text-decoration:none;
-
-    font-weight:bold;
-
-    transition:.3s;
+line-height:1.8;
 
 }
 
+/* ====================================
+ANIMATED BACKGROUND
+==================================== */
 
+@keyframes gradientMove{
 
-header a:hover {
+0%{
+background-position:0% 50%;
+}
 
-    transform:translateY(-4px);
+50%{
+background-position:100% 50%;
+}
+
+100%{
+background-position:0% 50%;
+}
 
 }
 
+/* ====================================
+PHYSICS EQUATIONS
+==================================== */
 
+.physics-bg{
 
+position:fixed;
 
+inset:0;
 
-/* =========================
-   Section
-========================= */
+pointer-events:none;
 
+z-index:-2;
 
-section {
-
-    margin-bottom:30px;
-
-}
-
-
-h2 {
-
-    font-size:2rem;
-
-    color:#38bdf8;
+overflow:hidden;
 
 }
 
+.physics-bg span{
 
+position:absolute;
 
-section {
+font-size:4rem;
 
-    background:
+font-weight:700;
 
-    rgba(255,255,255,0.05);
+color:
+rgba(255,255,255,.03);
 
-    backdrop-filter:blur(10px);
-
-    border-radius:20px;
-
-    margin-bottom:25px;
-
-    border:1px solid rgba(255,255,255,0.1);
+animation:
+floatEquation 25s ease-in-out infinite;
 
 }
 
+.physics-bg span:nth-child(1){
 
-
-/* =========================
-   Cards
-========================= */
-
-
-h3 {
-
-    color:#f8fafc;
+top:10%;
+left:8%;
 
 }
 
+.physics-bg span:nth-child(2){
 
-
-ul {
-
-    padding-left:20px;
-
-}
-
-
-
-li {
-
-    margin-bottom:10px;
+top:70%;
+left:12%;
 
 }
 
+.physics-bg span:nth-child(3){
 
-
-
-
-/* =========================
-   Skill boxes
-========================= */
-
-
-.skills {
-
-    display:grid;
-
-    grid-template-columns:
-    repeat(auto-fit,minmax(250px,1fr));
-
-    gap:20px;
+top:25%;
+right:10%;
 
 }
 
+.physics-bg span:nth-child(4){
 
-
-.skills p {
-
-    background:
-    rgba(56,189,248,.1);
-
-    padding:20px;
-
-    border-radius:15px;
+bottom:15%;
+right:12%;
 
 }
 
+.physics-bg span:nth-child(5){
 
-
-
-
-/* =========================
-   Footer
-========================= */
-
-
-footer {
-
-    text-align:center;
-
-    color:#94a3b8;
+top:45%;
+left:45%;
 
 }
 
+.physics-bg span:nth-child(6){
 
+top:12%;
+left:60%;
 
+}
 
-/* =========================
-   Mobile
-========================= */
+@keyframes floatEquation{
 
+0%{
+transform:translateY(0px);
+}
 
-@media(max-width:600px){
+50%{
+transform:translateY(-30px);
+}
 
+100%{
+transform:translateY(0px);
+}
 
-header h1 {
+}
+
+/* ====================================
+SPOTLIGHT
+==================================== */
+
+#spotlight{
+
+position:fixed;
+
+width:350px;
+height:350px;
+
+border-radius:50%;
+
+background:
+radial-gradient(
+circle,
+rgba(0,212,255,.18),
+transparent 70%
+);
+
+pointer-events:none;
+
+z-index:-1;
+
+transform:
+translate(-50%,-50%);
+
+}
+
+/* ====================================
+CONTAINER
+==================================== */
+
+.container{
+
+max-width:1200px;
+
+margin:auto;
+
+padding:
+0 24px;
+
+}
+
+/* ====================================
+NAVBAR
+==================================== */
+
+nav{
+
+position:fixed;
+
+width:100%;
+
+top:0;
+
+z-index:1000;
+
+background:
+rgba(0,0,0,.15);
+
+backdrop-filter:
+blur(15px);
+
+border-bottom:
+1px solid rgba(255,255,255,.05);
+
+}
+
+.nav-container{
+
+max-width:1200px;
+
+margin:auto;
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+padding:
+18px 24px;
+
+}
+
+.logo{
+
+font-size:1.5rem;
+
+font-weight:800;
+
+color:var(--gold);
+
+letter-spacing:2px;
+
+}
+
+nav ul{
+
+display:flex;
+
+gap:30px;
+
+list-style:none;
+
+}
+
+nav a{
+
+color:var(--ivory);
+
+text-decoration:none;
+
+font-weight:500;
+
+transition:.3s;
+
+}
+
+nav a:hover{
+
+color:var(--gold);
+
+}
+
+/* ====================================
+HERO
+==================================== */
+
+.hero{
+
+min-height:100vh;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+text-align:center;
+
+padding:100px 20px;
+
+}
+
+.hero-content{
+
+max-width:900px;
+
+}
+
+.hero-badge{
+
+display:inline-block;
+
+padding:
+10px 20px;
+
+border-radius:50px;
+
+background:
+rgba(255,255,255,.08);
+
+border:
+1px solid rgba(255,255,255,.15);
+
+margin-bottom:25px;
+
+}
+
+.hero h1{
+
+font-size:5rem;
+
+font-weight:800;
+
+line-height:1.1;
+
+margin-bottom:10px;
+
+}
+
+.hero h1 span{
+
+color:var(--gold);
+
+}
+
+.hero h2{
+
+height:50px;
+
+font-size:1.5rem;
+
+font-weight:600;
+
+color:var(--cyan);
+
+margin-bottom:20px;
+
+}
+
+.hero p{
+
+font-size:1.15rem;
+
+max-width:700px;
+
+margin:auto;
+
+opacity:.9;
+
+margin-bottom:35px;
+
+}
+
+/* ====================================
+BUTTONS
+==================================== */
+
+.hero-buttons{
+
+display:flex;
+
+justify-content:center;
+
+gap:20px;
+
+flex-wrap:wrap;
+
+}
+
+.btn-primary{
+
+background:
+linear-gradient(
+135deg,
+var(--gold),
+var(--gold-soft)
+);
+
+color:
+var(--maroon-dark);
+
+padding:
+14px 30px;
+
+border-radius:40px;
+
+text-decoration:none;
+
+font-weight:700;
+
+transition:.3s;
+
+}
+
+.btn-primary:hover{
+
+transform:
+translateY(-5px);
+
+}
+
+.btn-secondary{
+
+border:
+2px solid var(--gold);
+
+color:
+var(--ivory);
+
+padding:
+14px 30px;
+
+border-radius:40px;
+
+text-decoration:none;
+
+transition:.3s;
+
+}
+
+.btn-secondary:hover{
+
+background:
+rgba(255,255,255,.08);
+
+}
+
+/* ====================================
+STATS
+==================================== */
+
+.stats-section{
+
+margin-top:-100px;
+
+}
+
+.stats-grid{
+
+display:grid;
+
+grid-template-columns:
+repeat(3,1fr);
+
+gap:25px;
+
+}
+
+.stat-card{
+
+background:
+var(--glass);
+
+backdrop-filter:
+blur(15px);
+
+padding:30px;
+
+border-radius:25px;
+
+border:
+1px solid var(--border);
+
+text-align:center;
+
+}
+
+.stat-card h3{
+
+font-size:3rem;
+
+color:var(--gold);
+
+}
+
+/* ====================================
+SECTIONS
+==================================== */
+
+.section{
+
+padding:
+100px 0;
+
+}
+
+.section-title{
+
+text-align:center;
 
 font-size:2.5rem;
 
+margin-bottom:50px;
+
+color:var(--gold);
+
 }
 
+/* ====================================
+GLASS CARD
+==================================== */
+
+.glass-card{
+
+background:
+var(--glass);
+
+backdrop-filter:
+blur(15px);
+
+padding:40px;
+
+border-radius:25px;
+
+border:
+1px solid var(--border);
+
+transition:.4s;
+
+}
+
+.glass-card:hover{
+
+transform:
+translateY(-5px);
+
+}
+
+/* ====================================
+TIMELINE
+==================================== */
+
+.timeline{
+
+max-width:900px;
+
+margin:auto;
+
+position:relative;
+
+}
+
+.timeline::before{
+
+content:"";
+
+position:absolute;
+
+left:20px;
+
+top:0;
+
+width:3px;
+
+height:100%;
+
+background:
+linear-gradient(
+to bottom,
+var(--gold),
+var(--cyan)
+);
+
+}
+
+.timeline-item{
+
+position:relative;
+
+padding-left:70px;
+
+margin-bottom:60px;
+
+}
+
+.timeline-dot{
+
+position:absolute;
+
+left:8px;
+
+top:5px;
+
+width:25px;
+height:25px;
+
+background:
+var(--gold);
+
+border-radius:50%;
+
+box-shadow:
+0 0 15px rgba(212,175,55,.7);
+
+}
+
+.timeline-content{
+
+background:
+var(--glass);
+
+padding:30px;
+
+border-radius:20px;
+
+border:
+1px solid var(--border);
+
+}
+
+.timeline-content h3{
+
+color:var(--gold);
+
+margin-bottom:5px;
+
+}
+
+.timeline-content h4{
+
+margin-bottom:10px;
+
+}
+
+.timeline-content span{
+
+opacity:.8;
+
+font-size:.9rem;
+
+}
+
+/* ====================================
+SKILLS
+==================================== */
+
+.skills-grid{
+
+display:grid;
+
+grid-template-columns:
+repeat(2,1fr);
+
+gap:25px;
+
+}
+
+.skill-card{
+
+background:
+var(--glass);
+
+padding:35px;
+
+border-radius:25px;
+
+border:
+1px solid var(--border);
+
+text-align:center;
+
+transition:.4s;
+
+}
+
+.skill-card:hover{
+
+transform:
+translateY(-10px);
+
+box-shadow:
+0 0 30px rgba(0,212,255,.2);
+
+}
+
+.skill-card i{
+
+font-size:2rem;
+
+margin-bottom:15px;
+
+color:var(--gold);
+
+}
+
+.skill-card h3{
+
+margin-bottom:15px;
+
+}
+
+/* ====================================
+CONTACT
+==================================== */
+
+.contact-card{
+
+background:
+var(--glass);
+
+padding:50px;
+
+border-radius:30px;
+
+border:
+1px solid var(--border);
+
+text-align:center;
+
+}
+
+.contact-card h2{
+
+margin-bottom:35px;
+
+color:var(--gold);
+
+}
+
+.contact-grid{
+
+display:grid;
+
+grid-template-columns:
+repeat(4,1fr);
+
+gap:20px;
+
+}
+
+.contact-grid a{
+
+text-decoration:none;
+
+color:var(--ivory);
+
+padding:25px;
+
+background:
+rgba(255,255,255,.05);
+
+border-radius:20px;
+
+transition:.3s;
+
+}
+
+.contact-grid a:hover{
+
+transform:
+translateY(-5px);
+
+background:
+rgba(255,255,255,.1);
+
+}
+
+.contact-grid i{
+
+display:block;
+
+font-size:1.5rem;
+
+margin-bottom:10px;
+
+color:var(--gold);
+
+}
+
+/* ====================================
+FOOTER
+==================================== */
+
+footer{
+
+padding:40px;
+
+text-align:center;
+
+opacity:.8;
+
+}
+
+/* ====================================
+SCROLLBAR
+==================================== */
+
+::-webkit-scrollbar{
+
+width:10px;
+
+}
+
+::-webkit-scrollbar-track{
+
+background:
+var(--maroon-dark);
+
+}
+
+::-webkit-scrollbar-thumb{
+
+background:
+var(--gold);
+
+border-radius:20px;
+
+}
+
+/* ====================================
+RESPONSIVE
+==================================== */
+
+@media(max-width:900px){
+
+.hero h1{
+
+font-size:3.5rem;
+
+}
+
+.skills-grid{
+
+grid-template-columns:1fr;
+
+}
+
+.contact-grid{
+
+grid-template-columns:
+repeat(2,1fr);
+
+}
+
+.stats-grid{
+
+grid-template-columns:1fr;
+
+}
+
+}
+
+@media(max-width:600px){
+
+nav ul{
+
+display:none;
+
+}
+
+.hero h1{
+
+font-size:2.8rem;
+
+}
+
+.hero h2{
+
+font-size:1.1rem;
+
+}
+
+.contact-grid{
+
+grid-template-columns:1fr;
+
+}
+
+.timeline-item{
+
+padding-left:55px;
+
+}
 
 }
