@@ -19,7 +19,7 @@ AOS.init({
 
 const roles = [
     "Research Intern at BRIN",
-    "Laboratory Analyst Candidate",
+    "Laboratory Assistant",
     "Scientific Data Analyst",
     "Computational Physics Researcher",
     "High Performance Computing Enthusiast"
@@ -385,7 +385,7 @@ RIZKY SETYAWAN PORTFOLIO
 
 Physics Undergraduate
 Research Intern at BRIN
-Laboratory Analyst Candidate
+Laboratory Assistant
 
 Built with:
 HTML + CSS + JavaScript
