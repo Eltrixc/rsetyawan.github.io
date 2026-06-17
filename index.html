@@ -8,223 +8,563 @@
 
 <title>Rizky Setyawan | Laboratory Analyst</title>
 
-<link rel="stylesheet" href="style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+/* ===================================
+   Qatar 2022 Inspired Portfolio
+=================================== */
+
+:root{
+
+--maroon:#8A1538;
+--maroon-dark:#5C0E25;
+
+--gold:#D4AF37;
+
+--ivory:#F8F4E9;
+
+--purple:#3A163F;
+
+}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+
+font-family:'Poppins',sans-serif;
+
+background:
+linear-gradient(
+135deg,
+var(--maroon-dark),
+var(--maroon),
+var(--purple)
+);
+
+color:var(--ivory);
+
+line-height:1.8;
+
+overflow-x:hidden;
+
+}
+
+/* Decorative pattern */
+
+body::before{
+
+content:"";
+
+position:fixed;
+
+inset:0;
+
+background-image:
+radial-gradient(
+circle,
+rgba(212,175,55,.07) 1px,
+transparent 1px
+);
+
+background-size:40px 40px;
+
+pointer-events:none;
+
+z-index:-1;
+
+}
+
+
+/* ==========================
+Hero
+========================== */
+
+.hero{
+
+min-height:100vh;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+text-align:center;
+
+padding:40px;
+
+}
+
+.hero-content{
+
+max-width:900px;
+
+}
+
+.hero h1{
+
+font-size:5rem;
+
+font-weight:700;
+
+color:var(--ivory);
+
+margin-bottom:15px;
+
+}
+
+.hero p{
+
+font-size:1.4rem;
+
+opacity:.95;
+
+margin-bottom:30px;
+
+}
+
+.hero-buttons{
+
+display:flex;
+
+justify-content:center;
+
+gap:15px;
+
+flex-wrap:wrap;
+
+}
+
+.btn{
+
+padding:14px 28px;
+
+border-radius:40px;
+
+text-decoration:none;
+
+font-weight:600;
+
+transition:.3s;
+
+}
+
+.btn-primary{
+
+background:var(--gold);
+
+color:var(--maroon-dark);
+
+}
+
+.btn-primary:hover{
+
+transform:translateY(-4px);
+
+}
+
+.btn-outline{
+
+border:2px solid var(--gold);
+
+color:var(--ivory);
+
+}
+
+.btn-outline:hover{
+
+background:rgba(255,255,255,.1);
+
+}
+
+
+/* ==========================
+Sections
+========================== */
+
+.container{
+
+max-width:1100px;
+
+margin:auto;
+
+padding:0 20px;
+
+}
+
+.section{
+
+margin-bottom:40px;
+
+}
+
+.card{
+
+background:
+rgba(255,255,255,.08);
+
+backdrop-filter:blur(12px);
+
+border:1px solid rgba(255,255,255,.15);
+
+border-radius:24px;
+
+padding:35px;
+
+}
+
+.section-title{
+
+font-size:2rem;
+
+margin-bottom:20px;
+
+color:var(--gold);
+
+}
+
+
+/* ==========================
+Experience
+========================== */
+
+.timeline-item{
+
+margin-bottom:25px;
+
+}
+
+.timeline-item h3{
+
+color:var(--gold);
+
+margin-bottom:8px;
+
+}
+
+.timeline-item ul{
+
+padding-left:20px;
+
+}
+
+
+/* ==========================
+Skills
+========================== */
+
+.skills-grid{
+
+display:grid;
+
+grid-template-columns:
+repeat(auto-fit,minmax(250px,1fr));
+
+gap:20px;
+
+}
+
+.skill-card{
+
+background:
+rgba(255,255,255,.06);
+
+padding:25px;
+
+border-radius:18px;
+
+}
+
+.skill-card h3{
+
+color:var(--gold);
+
+margin-bottom:10px;
+
+}
+
+
+/* ==========================
+Footer
+========================== */
+
+footer{
+
+padding:60px 20px;
+
+text-align:center;
+
+opacity:.8;
+
+}
+
+
+/* ==========================
+Mobile
+========================== */
+
+@media(max-width:768px){
+
+.hero h1{
+
+font-size:3rem;
+
+}
+
+.hero p{
+
+font-size:1.1rem;
+
+}
+
+}
+
+</style>
 
 </head>
 
-
 <body>
 
+<!-- HERO -->
 
-<header>
+<section class="hero">
+
+<div class="hero-content">
 
 <h1>Rizky Setyawan</h1>
 
 <p>
-Physics Student | Computational Physics | Research & Data Analysis
+Laboratory Analyst Candidate • Research Assistant • Scientific Data Analysis
 </p>
 
-<div>
+<div class="hero-buttons">
 
-<a href="CV-1.pdf">Download CV</a>
+<a href="CV-1.pdf" class="btn btn-primary">
+Download CV
+</a>
+
+<a href="#about" class="btn btn-outline">
+Learn More
+</a>
 
 </div>
 
-</header>
-
-
-
-<section>
-
-<h2>About Me</h2>
-
-<p>
-
-I am an undergraduate Physics student at Universitas Negeri Malang
-with research internship experience at the National Research and Innovation
-Agency (BRIN).
-
-My experience includes scientific data analysis, technical documentation,
-research support activities, and computational approaches for scientific
-problems.
-
-I am interested in laboratory analysis, quality-oriented workflows,
-research and development, and data-driven problem solving.
-
-</p>
+</div>
 
 </section>
 
 
+<!-- ABOUT -->
+
+<div class="container">
+
+<section id="about" class="section">
+
+<div class="card">
+
+<h2 class="section-title">
+About Me
+</h2>
+
+<p>
+
+I am a Physics undergraduate student at Universitas Negeri Malang with research internship experience at the National Research and Innovation Agency (BRIN).
+
+My experience includes scientific data analysis, technical documentation, computational methods, and research support activities. I am passionate about laboratory analysis, scientific problem solving, quality-oriented workflows, and data-driven decision making.
+
+</p>
+
+</div>
+
+</section>
 
 
+<!-- EDUCATION -->
 
-<section>
+<section class="section">
 
-<h2>Education</h2>
+<div class="card">
 
+<h2 class="section-title">
+Education
+</h2>
 
-<h3>Universitas Negeri Malang</h3>
+<h3>
+Universitas Negeri Malang
+</h3>
 
 <p>
 Bachelor of Physics
 <br>
-2022 - Present
+2022 – Present
 <br>
 GPA: 3.52 / 4.00
 </p>
 
+</div>
 
 </section>
 
 
+<!-- EXPERIENCE -->
 
+<section class="section">
 
+<div class="card">
 
-<section>
+<h2 class="section-title">
+Research Experience
+</h2>
 
-<h2>Research Experience</h2>
+<div class="timeline-item">
 
-
-<h3>Research Intern — Badan Riset dan Inovasi Nasional (BRIN)</h3>
+<h3>
+Research Intern — BRIN
+</h3>
 
 <p>
-July 2025 - January 2026
+July 2025 – January 2026
 </p>
-
 
 <ul>
 
 <li>
-Supported research activities through scientific data processing,
-technical assistance, and documentation.
+Supported scientific research activities through data processing and technical assistance.
 </li>
-
 
 <li>
-Assisted researchers in organizing, analyzing, and interpreting scientific data.
+Analyzed and interpreted scientific data.
 </li>
-
 
 <li>
 Prepared technical reports and research documentation.
 </li>
 
-
 <li>
-Participated in the development and assembly of Quasi-10 and Quasi-11
-computing clusters for research infrastructure.
+Participated in development of Quasi-10 and Quasi-11 HPC clusters.
 </li>
 
+<li>
+Assisted Linux-based system setup and troubleshooting.
+</li>
 
 </ul>
 
-
-</section>
-
-
-
-
-
-
-<section>
-
-<h2>Skills</h2>
-
-
-<div class="skills">
-
-<p>
-<strong>Laboratory & Analytical</strong>
-<br>
-Scientific data analysis,
-data interpretation,
-technical reporting,
-research documentation,
-quality-oriented workflow
-</p>
-
-
-<p>
-<strong>Programming & Tools</strong>
-<br>
-Python,
-Linux,
-Microsoft Office,
-Git,
-LaTeX,
-Jupyter Notebook
-</p>
-
+</div>
 
 </div>
 
+</section>
+
+
+<!-- SKILLS -->
+
+<section class="section">
+
+<div class="card">
+
+<h2 class="section-title">
+Skills
+</h2>
+
+<div class="skills-grid">
+
+<div class="skill-card">
+
+<h3>
+Laboratory & Analysis
+</h3>
+
+Scientific Data Analysis<br>
+Technical Reporting<br>
+Documentation<br>
+Data Interpretation
+
+</div>
+
+<div class="skill-card">
+
+<h3>
+Programming
+</h3>
+
+Python<br>
+NumPy<br>
+SciPy<br>
+Matplotlib
+
+</div>
+
+<div class="skill-card">
+
+<h3>
+Software & Tools
+</h3>
+
+Microsoft Office<br>
+Linux<br>
+Git<br>
+LaTeX<br>
+Jupyter Notebook
+
+</div>
+
+</div>
+
+</div>
 
 </section>
 
 
+<!-- LANGUAGES -->
 
+<section class="section">
 
+<div class="card">
 
-
-<section>
-
-<h2>Language</h2>
+<h2 class="section-title">
+Languages
+</h2>
 
 <p>
 
 Indonesian — Native
 
-<br>
+<br><br>
 
 English — TOEFL ITP 557
-<br>
-EF SET 68 (CEFR C1)
-
-</p>
-
-
-</section>
-
-
-
-
-
-
-<section>
-
-<h2>Contact</h2>
-
-<p>
-
-Email:
-setya1rizky@email.com
 
 <br>
 
-GitHub:
-github.com/Eltrixc
+EF SET 61–70 (CEFR C1)
 
 </p>
 
+</div>
 
 </section>
 
-
-
+</div>
 
 
 <footer>
 
-<p>
 © 2026 Rizky Setyawan
-</p>
 
 </footer>
 
-
-
 </body>
-
-</html>
 </html>
