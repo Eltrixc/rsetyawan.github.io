@@ -1,5 +1,5 @@
 /* =========================================
-   AOS INITIALIZATION
+   AOS
 ========================================= */
 
 AOS.init({
@@ -9,25 +9,25 @@ AOS.init({
 });
 
 /* =========================================
-   TYPING ANIMATION
+   TYPING EFFECT
 ========================================= */
 
 const typingElement =
-    document.getElementById("typing");
+document.getElementById("typing");
 
-const texts = [
+const typingTexts = [
 
-    "Research Intern at BRIN",
+"Research Intern at BRIN",
 
-    "Computational Physics Enthusiast",
+"Computational Physics",
 
-    "Scientific Computing",
+"Scientific Computing",
 
-    "Quantum Materials Research",
+"Quantum Materials",
 
-    "High Performance Computing",
+"High Performance Computing",
 
-    "Laboratory Assistant"
+"Scientific Data Analysis"
 
 ];
 
@@ -35,271 +35,325 @@ let textIndex = 0;
 let charIndex = 0;
 let deleting = false;
 
-function typeEffect() {
+function typeWriter(){
 
-    const current =
-        texts[textIndex];
+const currentText =
+typingTexts[textIndex];
 
-    if (!deleting) {
+if(!deleting){
 
-        typingElement.textContent =
-            current.substring(
-                0,
-                charIndex + 1
-            );
+typingElement.textContent =
+currentText.substring(
+0,
+charIndex + 1
+);
 
-        charIndex++;
+charIndex++;
 
-        if (charIndex === current.length) {
+if(charIndex === currentText.length){
 
-            deleting = true;
+deleting = true;
 
-            setTimeout(
-                typeEffect,
-                1800
-            );
+setTimeout(
+typeWriter,
+1800
+);
 
-            return;
-        }
+return;
 
-    } else {
-
-        typingElement.textContent =
-            current.substring(
-                0,
-                charIndex - 1
-            );
-
-        charIndex--;
-
-        if (charIndex === 0) {
-
-            deleting = false;
-
-            textIndex =
-                (textIndex + 1) %
-                texts.length;
-        }
-    }
-
-    setTimeout(
-        typeEffect,
-        deleting ? 50 : 90
-    );
 }
 
-typeEffect();
+}else{
+
+typingElement.textContent =
+currentText.substring(
+0,
+charIndex - 1
+);
+
+charIndex--;
+
+if(charIndex === 0){
+
+deleting = false;
+
+textIndex =
+(textIndex + 1)
+%
+typingTexts.length;
+
+}
+
+}
+
+setTimeout(
+
+typeWriter,
+
+deleting
+? 50
+: 90
+
+);
+
+}
+
+typeWriter();
 
 /* =========================================
-   COUNTER ANIMATION
+   PARTICLE FIELD
+========================================= */
+
+const particleContainer =
+document.getElementById(
+"particles"
+);
+
+for(let i=0;i<60;i++){
+
+const particle =
+document.createElement("div");
+
+particle.classList.add(
+"particle"
+);
+
+particle.style.left =
+Math.random()*100 + "%";
+
+particle.style.top =
+Math.random()*100 + "%";
+
+particle.style.animationDuration =
+(15 + Math.random()*20)
++ "s";
+
+particle.style.animationDelay =
+Math.random()*20 + "s";
+
+particleContainer.appendChild(
+particle
+);
+
+}
+
+/* =========================================
+   SPOTLIGHT
+========================================= */
+
+const spotlight =
+document.getElementById(
+"spotlight"
+);
+
+document.addEventListener(
+"mousemove",
+(e)=>{
+
+spotlight.style.left =
+e.clientX + "px";
+
+spotlight.style.top =
+e.clientY + "px";
+
+}
+);
+
+/* =========================================
+   COUNTER
 ========================================= */
 
 const counters =
-    document.querySelectorAll(
-        ".counter"
-    );
+document.querySelectorAll(
+".counter"
+);
 
 const counterObserver =
-    new IntersectionObserver(
+new IntersectionObserver(
 
-        (entries) => {
+(entries)=>{
 
-            entries.forEach(entry => {
+entries.forEach(entry=>{
 
-                if (
-                    !entry.isIntersecting
-                ) return;
+if(!entry.isIntersecting)
+return;
 
-                const counter =
-                    entry.target;
+const counter =
+entry.target;
 
-                const target =
-                    parseInt(
-                        counter.dataset.target
-                    );
+const target =
+parseInt(
+counter.dataset.target
+);
 
-                let current = 0;
+let current = 0;
 
-                const increment =
-                    Math.ceil(
-                        target / 80
-                    );
+const increment =
+Math.ceil(
+target/80
+);
 
-                const update = () => {
+const update = ()=>{
 
-                    current += increment;
+current += increment;
 
-                    if (
-                        current >= target
-                    ) {
+if(current >= target){
 
-                        counter.textContent =
-                            target;
+counter.textContent =
+target;
 
-                    } else {
+}else{
 
-                        counter.textContent =
-                            current;
+counter.textContent =
+current;
 
-                        requestAnimationFrame(
-                            update
-                        );
-                    }
-                };
+requestAnimationFrame(
+update
+);
 
-                update();
+}
 
-                counterObserver.unobserve(
-                    counter
-                );
+};
 
-            });
+update();
 
-        },
+counterObserver.unobserve(
+counter
+);
 
-        {
-            threshold: 0.5
-        }
+});
 
-    );
+},
 
-counters.forEach(counter => {
+{
+threshold:.4
+}
 
-    counterObserver.observe(
-        counter
-    );
+);
+
+counters.forEach(counter=>{
+
+counterObserver.observe(
+counter
+);
 
 });
 
 /* =========================================
-   SPOTLIGHT FOLLOW MOUSE
-========================================= */
-
-const spotlight =
-    document.getElementById(
-        "spotlight"
-    );
-
-document.addEventListener(
-    "mousemove",
-    (e) => {
-
-        spotlight.style.left =
-            e.clientX + "px";
-
-        spotlight.style.top =
-            e.clientY + "px";
-    }
-);
-
-/* =========================================
-   ACTIVE NAV LINK
+   ACTIVE NAVBAR
 ========================================= */
 
 const sections =
-    document.querySelectorAll(
-        "section[id]"
-    );
+document.querySelectorAll(
+"section[id]"
+);
 
 const navLinks =
-    document.querySelectorAll(
-        "nav a"
-    );
+document.querySelectorAll(
+"nav a"
+);
 
 window.addEventListener(
-    "scroll",
-    () => {
+"scroll",
+()=>{
 
-        let current = "";
+let current = "";
 
-        sections.forEach(section => {
+sections.forEach(section=>{
 
-            const top =
-                section.offsetTop;
+const top =
+section.offsetTop;
 
-            const height =
-                section.offsetHeight;
+const height =
+section.offsetHeight;
 
-            if (
-                scrollY >=
-                top - 200
-            ) {
+if(
+window.scrollY
+>=
+top - 200
+){
 
-                current =
-                    section.id;
-            }
-        });
+current =
+section.id;
 
-        navLinks.forEach(link => {
+}
 
-            link.classList.remove(
-                "active-link"
-            );
+});
 
-            if (
-                link.getAttribute(
-                    "href"
-                ) === "#" + current
-            ) {
+navLinks.forEach(link=>{
 
-                link.classList.add(
-                    "active-link"
-                );
-            }
-        });
-    }
+link.classList.remove(
+"active-link"
+);
+
+if(
+
+link.getAttribute(
+"href"
+)
+=== "#" + current
+
+){
+
+link.classList.add(
+"active-link"
+);
+
+}
+
+});
+
+}
 );
 
 /* =========================================
-   NAVBAR EFFECT
+   NAVBAR BACKGROUND
 ========================================= */
 
 const nav =
-    document.querySelector(
-        "nav"
-    );
+document.querySelector(
+"nav"
+);
 
 window.addEventListener(
-    "scroll",
-    () => {
+"scroll",
+()=>{
 
-        if (
-            window.scrollY > 50
-        ) {
+if(window.scrollY > 50){
 
-            nav.style.background =
-                "rgba(0,0,0,.35)";
+nav.style.background =
+"rgba(0,0,0,.35)";
 
-            nav.style.backdropFilter =
-                "blur(20px)";
+}else{
 
-        } else {
+nav.style.background =
+"rgba(0,0,0,.15)";
 
-            nav.style.background =
-                "rgba(0,0,0,.15)";
-        }
-    }
+}
+
+}
 );
 
 /* =========================================
    HERO PARALLAX
 ========================================= */
 
-const heroContent =
-    document.querySelector(
-        ".hero-content"
-    );
+const hero =
+document.querySelector(
+".hero-content"
+);
 
 window.addEventListener(
-    "scroll",
-    () => {
+"scroll",
+()=>{
 
-        const value =
-            window.scrollY;
+hero.style.transform =
 
-        heroContent.style.transform =
-            `translateY(${value * 0.12}px)`;
-    }
+`translateY(${
+window.scrollY*0.12
+}px)`;
+
+}
 );
 
 /* =========================================
@@ -307,135 +361,189 @@ window.addEventListener(
 ========================================= */
 
 const cards =
-    document.querySelectorAll(
+document.querySelectorAll(
 
-        ".glass-card, \
-         .skill-card, \
-         .interest-card, \
-         .stat-card"
+".glass-card,\
+.skill-card,\
+.interest-card,\
+.project-card,\
+.stat-card"
 
-    );
+);
 
-cards.forEach(card => {
+cards.forEach(card=>{
 
-    card.addEventListener(
-        "mousemove",
-        (e) => {
+card.addEventListener(
+"mousemove",
+(e)=>{
 
-            const rect =
-                card.getBoundingClientRect();
+const rect =
+card.getBoundingClientRect();
 
-            const x =
-                e.clientX -
-                rect.left;
+const x =
+e.clientX - rect.left;
 
-            const y =
-                e.clientY -
-                rect.top;
+const y =
+e.clientY - rect.top;
 
-            const centerX =
-                rect.width / 2;
+const centerX =
+rect.width/2;
 
-            const centerY =
-                rect.height / 2;
+const centerY =
+rect.height/2;
 
-            const rotateY =
-                (x - centerX) / 20;
+const rotateY =
+(x-centerX)/18;
 
-            const rotateX =
-                (centerY - y) / 20;
+const rotateX =
+(centerY-y)/18;
 
-            card.style.transform =
+card.style.transform =
 
-                `
-                perspective(1000px)
-                rotateX(${rotateX}deg)
-                rotateY(${rotateY}deg)
-                translateY(-6px)
-                `;
-        }
-    );
+`
+perspective(1000px)
+rotateX(${rotateX}deg)
+rotateY(${rotateY}deg)
+translateY(-6px)
+`;
 
-    card.addEventListener(
-        "mouseleave",
-        () => {
+}
+);
 
-            card.style.transform =
+card.addEventListener(
+"mouseleave",
+()=>{
 
-                `
-                perspective(1000px)
-                rotateX(0deg)
-                rotateY(0deg)
-                translateY(0)
-                `;
-        }
-    );
+card.style.transform =
+
+`
+perspective(1000px)
+rotateX(0deg)
+rotateY(0deg)
+translateY(0)
+`;
+
+}
+);
+
 });
 
 /* =========================================
-   HERO FADE
+   PHYSICS EQUATION PARALLAX
 ========================================= */
 
-const hero =
-    document.querySelector(
-        ".hero"
-    );
+const equations =
+document.querySelectorAll(
+".physics-bg span"
+);
 
 window.addEventListener(
-    "scroll",
-    () => {
+"mousemove",
+(e)=>{
 
-        const opacity =
-            1 -
-            window.scrollY / 700;
+const x =
+e.clientX /
+window.innerWidth;
 
-        hero.style.opacity =
-            Math.max(
-                opacity,
-                0.25
-            );
-    }
+const y =
+e.clientY /
+window.innerHeight;
+
+equations.forEach(
+
+(eq,index)=>{
+
+const speed =
+(index+1)*3;
+
+eq.style.transform =
+
+`
+translate(
+${x*speed}px,
+${y*speed}px
+)
+`;
+
+}
+
+);
+
+}
 );
 
 /* =========================================
-   SCROLL REVEAL FOR TIMELINE
+   FADE HERO
 ========================================= */
 
-const timelineItems =
-    document.querySelectorAll(
-        ".timeline-item"
-    );
+const heroSection =
+document.querySelector(
+".hero"
+);
 
-const timelineObserver =
-    new IntersectionObserver(
+window.addEventListener(
+"scroll",
+()=>{
 
-        (entries) => {
+const opacity =
 
-            entries.forEach(entry => {
+1 -
+window.scrollY / 700;
 
-                if (
-                    entry.isIntersecting
-                ) {
+heroSection.style.opacity =
 
-                    entry.target.classList.add(
-                        "show"
-                    );
-                }
-            });
+Math.max(
+opacity,
+0.25
+);
 
-        },
+}
+);
 
-        {
-            threshold: 0.2
-        }
+/* =========================================
+   PROJECT REVEAL
+========================================= */
 
-    );
+const revealItems =
+document.querySelectorAll(
 
-timelineItems.forEach(item => {
+".project-card,\
+.timeline-item,\
+.skill-card,\
+.interest-card"
 
-    timelineObserver.observe(
-        item
-    );
+);
+
+const revealObserver =
+new IntersectionObserver(
+
+(entries)=>{
+
+entries.forEach(entry=>{
+
+if(entry.isIntersecting){
+
+entry.target.classList.add(
+"show"
+);
+
+}
+
+});
+
+},
+
+{
+threshold:.15
+}
+
+);
+
+revealItems.forEach(item=>{
+
+revealObserver.observe(
+item
+);
 
 });
 
@@ -445,34 +553,40 @@ timelineItems.forEach(item => {
 
 document
 .querySelectorAll(
-    'a[href^="#"]'
+'a[href^="#"]'
 )
 
-.forEach(anchor => {
+.forEach(anchor=>{
 
-    anchor.addEventListener(
-        "click",
-        function(e) {
+anchor.addEventListener(
+"click",
 
-            e.preventDefault();
+function(e){
 
-            const target =
-                document.querySelector(
-                    this.getAttribute(
-                        "href"
-                    )
-                );
+e.preventDefault();
 
-            if (target) {
+const target =
+document.querySelector(
 
-                target.scrollIntoView({
+this.getAttribute(
+"href"
+)
 
-                    behavior: "smooth"
+);
 
-                });
-            }
-        }
-    );
+if(target){
+
+target.scrollIntoView({
+
+behavior:"smooth"
+
+});
+
+}
+
+}
+
+);
 
 });
 
@@ -481,17 +595,17 @@ document
 ========================================= */
 
 console.log(`
-=====================================
+
+===================================
 
 RIZKY SETYAWAN
-Research Portfolio
-
-Physics Undergraduate
-Research Intern at BRIN
 
 Computational Physics
 Scientific Computing
 Quantum Materials
 
-=====================================
+BRIN Research Intern
+
+===================================
+
 `);
